@@ -28,7 +28,7 @@ int isEmpty(List* list) {
     return (list && list->head)? 1: 0; // ternary to be explicit, wasn't required
 }
 
-void append(List* list, int data) {
+List* append(List* list, int data) {
     Node* newNode = createNode(data);
     if (isEmpty(list)) {
         list->head = newNode;
@@ -39,6 +39,8 @@ void append(List* list, int data) {
     list->tail->next = newNode;
     newNode->prev = list->tail;
     list->tail = list->tail->next;
+
+    return list;
 }
 
 // Function to free the linked list
@@ -54,7 +56,7 @@ void freeList(List* list) {
     list->tail = NULL;
 }
 
-void tail(List* list) {
+List* tail(List* list) {
     // if empty
     if (isEmpty(list)) return;
     // if only 1 node
@@ -69,6 +71,8 @@ void tail(List* list) {
     free(list->tail);
     newTail->next = NULL;
     list->tail = newTail;
+
+    return list;
 }
 
 // assumes listNode is an element of list
@@ -91,7 +95,7 @@ void removeNode(List* list, Node* listNode) {
 
 }
 
-void divide(List* list, int value) {
+List* divide(List* list, int value) {
     if (isEmpty(list)) return;
     Node* current = list->head;
 
@@ -102,6 +106,8 @@ void divide(List* list, int value) {
         }
         current = nextNode;
     }
+
+    return list;
 }
 
 int sum(List* list) {

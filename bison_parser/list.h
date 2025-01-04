@@ -23,10 +23,10 @@ int equal(List* list);
 
 int sum(List* list);
 
-void append(List* list, int data);
+List* append(List* list, int data);
 
-void tail(List* list);
+List* tail(List* list);
 
-void divide(List* list, int value);
+List* divide(List* list, int value);
 
 void freeList(List* list);
