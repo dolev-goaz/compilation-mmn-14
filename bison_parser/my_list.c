@@ -25,7 +25,7 @@ List* createList(Node* node) {
 }
 
 int isEmpty(List* list) {
-    return (list && list->head)? 1: 0; // ternary to be explicit, wasn't required
+    return (list && list->head)? 0: 1; // ternary to be explicit, wasn't required
 }
 
 List* append(List* list, int data) {
