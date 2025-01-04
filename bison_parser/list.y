@@ -48,7 +48,7 @@ itemlist:
     | item                      { $$ = createList(createNode($1)); }
 
 item:
-    SUM '(' L ')'               { $$ = equal($3);  }
+    SUM '(' L ')'               { $$ = sum($3);  }
     | EQUAL '(' L ')'           { $$ = equal($3);  }
     | NUMBER                    { $$ = $1; }
     ;
