@@ -1,10 +1,6 @@
 %{
 #include <stdlib.h>
 #include "list.tab.h"
-
-union token_attribute {
-  int val;
-} token_attribute;
 %}
 
 %option noyywrap
@@ -17,7 +13,7 @@ divide  { return DIVIDE; }
 sum     { return SUM;    }
 equal   { return EQUAL;  }
 
-[0-9]+ { token_attribute.val = atoi(yytext); return NUMBER; }
+[0-9]+ { yylval.val = atoi(yytext); return NUMBER; }
 
  /* symbols */
 \( { return '('; }
