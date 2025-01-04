@@ -35,17 +35,18 @@ S:
     ;
 
 L:
-    TAIL '(' L ')'              { $$ = 'a'; }
-    | APPEND '(' item ',' L ')' { $$ = 'b'; }
-    | DIVIDE '(' item ',' L ')' { $$ = 'c'; }
+    '[' itemlist ']'            { $$ = '\0'; }
+    | TAIL '(' L ')'            { $$ = '\0'; }
+    | APPEND '(' item ',' L ')' { $$ = '\0'; }
+    | DIVIDE '(' item ',' L ')' { $$ = '\0'; }
 
 itemlist:
-    itemlist ',' item           { $$ = 'd'; }
-    | item                      { $$ = 'e'; }
+    itemlist ',' item           { $$ = '\0'; }
+    | item                      { $$ = '\0'; }
 
 item:
     SUM '(' L ')'               { $$ = 0;  }
-    | EQUAL '(' L ')'           { $$ = 3;  }
+    | EQUAL '(' L ')'           { $$ = 0;  }
     | NUMBER                    { $$ = $1; }
     ;
 
