@@ -1,13 +1,15 @@
+%code requires {
+    #include "my_list.h"
+}
 %code {
     #include <stdio.h>
-    #include "my_list.h"
     extern int yylex(void);
     void yyerror(const char* s);
 }
 
 %union {
     int val;
-    char list; // TODO: add list type
+    List* list; // TODO: add list type
 }
 
 
@@ -36,18 +38,18 @@ S:
     ;
 
 L:
-    '[' itemlist ']'            { $$ = '\0'; }
-    | TAIL '(' L ')'            { $$ = '\0'; }
-    | APPEND '(' item ',' L ')' { $$ = '\0'; }
-    | DIVIDE '(' item ',' L ')' { $$ = '\0'; }
+    '[' itemlist ']'            { $$ = $2; }
+    | TAIL '(' L ')'            { $$ = tail($3); }
+    | APPEND '(' item ',' L ')' { $$ = append($5, $3); }
+    | DIVIDE '(' item ',' L ')' { $$ = divide($5, $3); }
 
 itemlist:
-    itemlist ',' item           { $$ = '\0'; }
-    | item                      { $$ = '\0'; }
+    itemlist ',' item           { $$ = append($1, $3); }
+    | item                      { $$ = createList(createNode($1)); }
 
 item:
-    SUM '(' L ')'               { $$ = 0;  }
-    | EQUAL '(' L ')'           { $$ = 0;  }
+    SUM '(' L ')'               { $$ = equal($3);  }
+    | EQUAL '(' L ')'           { $$ = equal($3);  }
     | NUMBER                    { $$ = $1; }
     ;
 
