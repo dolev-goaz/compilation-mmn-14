@@ -52,8 +52,7 @@ void freeList(List* list) {
         head = head->next;
         free(temp);
     }
-    list->head = NULL;
-    list->tail = NULL;
+    free(list);
 }
 
 List* tail(List* list) {
