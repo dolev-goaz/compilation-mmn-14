@@ -45,7 +45,7 @@ L:
 
 itemlist:
     itemlist ',' item           { $$ = append($1, $3); }
-    | item                      { $$ = createList(createNode($1)); }
+    | item                      { $$ = createList($1); }
 
 item:
     SUM '(' L ')'               { $$ = sum($3);  }

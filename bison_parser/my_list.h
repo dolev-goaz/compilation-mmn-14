@@ -14,8 +14,7 @@ typedef struct List {
     Node* tail;
 } List;
 
-Node* createNode(int data);
-List* createList(Node* node);
+List* createList(int data);
 
 int isEmpty(List* list);
 

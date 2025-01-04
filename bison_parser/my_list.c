@@ -12,12 +12,13 @@ Node* createNode(int data) {
     return newNode;
 }
 
-List* createList(Node* node) {
+List* createList(int data) {
     List* newList = (List*)malloc(sizeof(List));
     if (!newList) {
         printf("Memory allocation failed\n");
         exit(1);
     }
+    Node* node = createNode(data);
     newList->head = node;
     newList->tail = node;
 
