@@ -33,7 +33,7 @@ List* append(List* list, int data) {
     if (isEmpty(list)) {
         list->head = newNode;
         list->tail = newNode;
-        return;
+        return list;
     }
     
     list->tail->next = newNode;
@@ -58,13 +58,13 @@ void freeList(List* list) {
 
 List* tail(List* list) {
     // if empty
-    if (isEmpty(list)) return;
+    if (isEmpty(list)) return list;
     // if only 1 node
     if (list->head == list->tail) {
         free(list->head);
         list->head = NULL;
         list->tail = NULL;
-        return;
+        return list;
     }
     // at least 2 nodes
     Node* newTail = list->tail->prev;
@@ -96,7 +96,7 @@ void removeNode(List* list, Node* listNode) {
 }
 
 List* divide(List* list, int value) {
-    if (isEmpty(list)) return;
+    if (isEmpty(list)) return list;
     Node* current = list->head;
 
     while (current) {
