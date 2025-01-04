@@ -77,7 +77,12 @@ List* tail(List* list) {
 // assumes listNode is an element of list
 void removeNode(List* list, Node* listNode) {
     if (isEmpty(list)) return;
-    Node* nextNode = listNode->next;
+    if (list->head == list->tail) {
+        free(listNode);
+        list->head = NULL;
+        list->tail = NULL;
+        return;
+    }
 
     if (listNode->prev) {
         listNode->prev->next = listNode->next;
