@@ -1,5 +1,6 @@
 %code {
     #include <stdio.h>
+    #include "my_list.h"
     extern int yylex(void);
     void yyerror(const char* s);
 }

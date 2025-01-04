@@ -2,20 +2,22 @@
 CC = gcc
 CFLAGS = -Wall -g
 OBJDIR = obj
+LEX = flex
 YACC = bison
 
 # output file
 TARGET = parser
-OBJS = $(OBJDIR)/list.o $(OBJDIR)/list.tab.o $(OBJDIR)/lla.yy.o
+OBJS = $(OBJDIR)/my_list.o $(OBJDIR)/list.tab.o $(OBJDIR)/lla.yy.o
 
 # compile final executable
 $(TARGET): $(OBJS)
+	@echo "Compiling the final parser"
 	$(CC) -o $(TARGET) $(OBJS)
 
 # compile list.c
-$(OBJDIR)/list.o: list.c list.h | $(OBJDIR)
+$(OBJDIR)/my_list.o: my_list.c my_list.h | $(OBJDIR)
 	@echo "Compiling list.c..."
-	$(CC) -c list.c $(CFLAGS) -o $(OBJDIR)/list.o
+	$(CC) -c my_list.c $(CFLAGS) -o $(OBJDIR)/my_list.o
 
 # generate the parser source code
 list.tab.c list.tab.h: list.y
