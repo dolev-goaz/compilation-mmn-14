@@ -1,1 +1,6 @@
 ~*.docx
+*.exe
+*.output
+*.tab.c
+*.tab.h
+lex.yy.c
