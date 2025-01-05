@@ -6,7 +6,8 @@ tests = [
     ("equal([10,10,10])", "1"),
     ("equal([4,5,4])", "0"),
     ("equal(tail([1]))", "1"), # equals of empty list
-    ("equal(tail([100,100,100,100]))", "1"),
+    ("equal(tail([50,100,100,100]))", "1"),
+    ("equal(tail([50,100,80,100]))", "0"),
     ("equal(divide(3,[3,6,9]))", "0"),
     ("equal(append(1,tail([1,1,1,1])))", "1"),
     ("equal(append(2,tail([1,1,1,1])))", "0"),
@@ -43,10 +44,14 @@ for file_input, output in tests:
     if stderr:
         stderr = stderr.decode("utf-8")[:-1]
         print(f"{file_input}. Error: {stderr}.")
+        error_count+=1
         continue
     if output != stdout:
         print(f"{file_input}. Expected: {output}. Got: {stdout}.")
+        error_count+=1
 
 os.remove("input")
 if error_count == 0:
-    print("Tests passed successfuly!")
+    print("✅ Tests passed successfuly!")
+else:
+    print("❌ Tests failed!")
