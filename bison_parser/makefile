@@ -39,5 +39,5 @@ $(OBJDIR):
 
 clean:
 	rm -rf $(OBJDIR) $(TARGET)
-	rm -f list.tab.c list.tab.h lla.yy.c
+	rm -f *.tab.c *.tab.h *.yy.c
 
