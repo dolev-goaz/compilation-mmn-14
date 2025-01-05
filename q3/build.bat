@@ -2,7 +2,7 @@
 
 :: configurations
 set CC=gcc
-set CFLAGS=-Wall -g
+set CFLAGS=-Wall
 set OBJDIR=obj
 set LEX=win_flex
 set YACC=win_bison

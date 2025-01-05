@@ -1,6 +1,6 @@
 # configurations
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall
 OBJDIR = obj
 LEX = flex
 YACC = bison
