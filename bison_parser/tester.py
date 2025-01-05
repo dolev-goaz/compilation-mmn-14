@@ -35,9 +35,9 @@ for file_input, output in tests:
         f.write(file_input)
     
     process = subprocess.Popen(
-        ['./list', 'input'],  # Replace with your executable
-        stdout=subprocess.PIPE,  # Capture stdout if needed
-        stderr=subprocess.PIPE   # Capture stderr if needed
+        ['./list', 'input'],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
     )
     stdout, stderr = process.communicate()
     stdout = stdout.decode("utf-8")[:-1]
