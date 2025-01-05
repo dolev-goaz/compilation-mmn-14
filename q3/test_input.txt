@@ -1,0 +1,1 @@
+sum(append(equal([3,3]),divide(10,[30,8,50])))
