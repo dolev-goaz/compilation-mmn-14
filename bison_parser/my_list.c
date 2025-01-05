@@ -67,10 +67,10 @@ List* tail(List* list) {
         return list;
     }
     // at least 2 nodes
-    Node* newTail = list->tail->prev;
-    free(list->tail);
-    newTail->next = NULL;
-    list->tail = newTail;
+    Node* newHead = list->head->next;
+    free(list->head);
+    newHead->prev = NULL;
+    list->head = newHead;
 
     return list;
 }
