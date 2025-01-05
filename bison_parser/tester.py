@@ -5,14 +5,15 @@ import os
 tests = [
     ("equal([10,10,10])", "1"),
     ("equal([4,5,4])", "0"),
-    ("equal([])", "1"),
+    ("equal(tail([1]))", "1"), # equals of empty list
     ("equal(tail([100,100,100,100]))", "1"),
     ("equal(divide(3,[3,6,9]))", "0"),
     ("equal(append(1,tail([1,1,1,1])))", "1"),
-    ("equal(divide(2,[4,6,8]))", "0"),
+    ("equal(append(2,tail([1,1,1,1])))", "0"),
+    ("equal(divide(2,[5,8,11]))", "1"),
     
     ("sum([2,4,6])", "12"),
-    ("sum([])", "0"),
+    ("sum(tail([8]))", "0"), # sum of empty list
     ("sum(tail([10,20,30]))", "50"),
     ("sum(divide(3,[3,6,9,10]))", "18"),
     ("sum(append(7,divide(2,[4,6,8])))", "25"),
