@@ -4,4 +4,4 @@
 *.tab.h
 *.yy.c
 obj
-parser
+list
