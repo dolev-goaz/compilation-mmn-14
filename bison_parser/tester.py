@@ -11,6 +11,8 @@ tests = [
     ("equal(append(1,tail([1,1,1,1])))", "1"),
     ("equal(append(2,tail([1,1,1,1])))", "0"),
     ("equal(divide(2,[5,8,11]))", "1"),
+    ("equal([12,4,100])", "0"), # example from assignment
+    ("equal([7,7,7])", "1"),    # example from assignment
     
     ("sum([2,4,6])", "12"),
     ("sum(tail([8]))", "0"), # sum of empty list
@@ -20,6 +22,8 @@ tests = [
     ("sum(append(3,tail([10,20,30])))", "53"),
     ("sum(divide(5,tail([50,25,10,15])))", "50"),
     ("sum(append(equal([2,2]),divide(2,[4,6])))", "11"),
+    ("sum(append(equal([3,3]),divide(10,[30,8,50])))", "81"), # example from assignment
+    ("sum([100,4,12])", "116"),                               # example from assignment
     
     ("42", "42")
 ]
