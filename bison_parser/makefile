@@ -6,42 +6,35 @@ LEX = flex
 YACC = bison
 
 # output file
-TARGET = parser
+TARGET = list
 OBJS = $(OBJDIR)/my_list.o $(OBJDIR)/list.tab.o $(OBJDIR)/lla.yy.o
 
 # compile final executable
 $(TARGET): $(OBJS)
-	@echo "Compiling the final parser"
 	$(CC) -o $(TARGET) $(OBJS)
 
 # compile list.c
 $(OBJDIR)/my_list.o: my_list.c my_list.h | $(OBJDIR)
-	@echo "Compiling list.c..."
 	$(CC) -c my_list.c $(CFLAGS) -o $(OBJDIR)/my_list.o
 
 # generate the parser source code
 list.tab.c list.tab.h: list.y
-	@echo "Generating parser source code"
 	$(YACC) -d list.y
 
 # compile the parser source code
 $(OBJDIR)/list.tab.o: list.tab.c list.tab.h | $(OBJDIR)
-	@echo "Compiling parser source code"
 	$(CC) -c list.tab.c $(CFLAGS) -o $(OBJDIR)/list.tab.o
 
 # generate the lexer source code
 lla.yy.c: lla.lex
-	@echo "Generating lexer source code"
 	$(LEX) -o lla.yy.c lla.lex
 
 # compile the lexer source code
 $(OBJDIR)/lla.yy.o: lla.yy.c | $(OBJDIR)
-	@echo "Compiling lexer source code"
 	$(CC) -c lla.yy.c $(CFLAGS) -o $(OBJDIR)/lla.yy.o
 
 # create object directory if it doesn't exist
 $(OBJDIR):
-	@echo "Creating obj directory..."
 	mkdir -p $(OBJDIR)
 
 clean:
