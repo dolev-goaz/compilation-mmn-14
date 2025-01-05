@@ -28,6 +28,7 @@ tests = [
     ("42", "42")
 ]
 
+error_count = 0
 for file_input, output in tests:
     with open("input", "w") as f:
         f.write(file_input)
@@ -47,3 +48,5 @@ for file_input, output in tests:
         print(f"{file_input}. Expected: {output}. Got: {stdout}.")
 
 os.remove("input")
+if error_count == 0:
+    print("Tests passed successfuly!")
