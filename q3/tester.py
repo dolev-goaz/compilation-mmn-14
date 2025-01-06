@@ -14,6 +14,8 @@ tests = [
     ("equal(divide(2,[5,8,11]))", "1"),
     ("equal([12,4,100])", "0"), # example from assignment
     ("equal([7,7,7])", "1"),    # example from assignment
+    ("sum(divide(0,[7,7,7]))", "0"), # divide(0,[__]) should result in empty list
+    ("equal(divide(0,[7,7,7]))", "1"),
     
     ("sum([2,4,6])", "12"),
     ("sum(tail([8]))", "0"), # sum of empty list
