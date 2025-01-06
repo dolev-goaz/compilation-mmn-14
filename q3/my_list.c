@@ -44,15 +44,17 @@ List* append(List* list, int data) {
     return list;
 }
 
-// Function to free the linked list
-void freeList(List* list) {
-    Node* head = list->head;
+void freeNodeList(Node* head) {
     Node* temp;
     while (head != NULL) {
         temp = head;
         head = head->next;
         free(temp);
     }
+}
+
+void freeList(List* list) {
+    freeNodeList(list->head);
     free(list);
 }
 
@@ -102,6 +104,14 @@ void removeNode(List* list, Node* listNode) {
 
 List* divide(List* list, int value) {
     if (isEmpty(list)) return list;
+    if (value == 0) {
+        // clear the list
+        freeNodeList(list->head);
+        list->head = NULL;
+        list->tail = NULL;
+        return list;
+    }
+
     Node* current = list->head;
 
     while (current) {
